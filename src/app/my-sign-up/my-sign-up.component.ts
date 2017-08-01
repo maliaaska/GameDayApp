@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionService } from '../services/session.service';
+
+
 
 @Component({
   selector: 'app-my-sign-up',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MySignUpComponent implements OnInit {
 
-  constructor() { }
+ user: Object = {
+    username: '',
+    password: ''
+ }
+
+ error = null;
+
+  constructor(
+    private session: SessionService,
+  ) { }
 
   ngOnInit() {
+  }
+signup() {
+    this.session.signup(this.user).subscribe(
+      (data) => {
+       console.log('signup OK')
+      },
+      (err) => {
+     
+        this.error = err;
+        console.log(err);
+      });
   }
 
 }
