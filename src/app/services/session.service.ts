@@ -86,8 +86,12 @@ export class SessionService implements CanActivate {
     return this.http.post(`${this.BASE_URL}/signup`, user)
       .map(res => {
         let json = res.json();
+        this.router.navigate(['/my-loggedin']);
+        console.log(' this redirected good as well');
         console.log(json);
         return json;
+        
+        
       }).catch(this.handleError);
   }
   
