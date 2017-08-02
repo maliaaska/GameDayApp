@@ -11,6 +11,7 @@ import { MyAboutComponent }  from './my-about/my-about.component';
 import { MyUserComponent } from './my-user/my-user.component';
 import { MySeconUserComponent } from './my-secon-user/my-secon-user.component';
 import { SessionService } from './services/session.service';
+import { MyLoggedinComponent } from './my-loggedin/my-loggedin.component';
 
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'about', component: MyAboutComponent },
   { path: 'my-user', component: MyUserComponent, },
   { path: 'my-secon-user', component: MySeconUserComponent, },
+  { path: 'my-loggedin', component: MyLoggedinComponent, },
 ];
 
 @NgModule({
@@ -32,7 +34,8 @@ const routes: Routes = [
     MySignUpComponent,
     MyAboutComponent,
     MyUserComponent,
-    MySeconUserComponent
+    MySeconUserComponent,
+    MyLoggedinComponent
    
   ],
   imports: [

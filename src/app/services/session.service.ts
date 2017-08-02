@@ -62,11 +62,15 @@ export class SessionService implements CanActivate {
           }
           this.isAuthenticated = true;
           localStorage.setItem('token', this.token);
+  
         }
         
-        return this.isAuthenticated;
+        return this.isAuthenticated, this.router.navigate(['/my-loggedin']), console.log('redirected');
+        
 
       }).catch(this.handleError);
+
+      
   }
 
   logout() {
