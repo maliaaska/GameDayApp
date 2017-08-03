@@ -12,10 +12,10 @@ import { MyUserComponent } from './my-user/my-user.component';
 import { MySeconUserComponent } from './my-secon-user/my-secon-user.component';
 import { SessionService } from './services/session.service';
 import { MyLoggedinComponent } from './my-loggedin/my-loggedin.component';
+import { EnterDetailsGuardService } from './services/enter-details-guard.service';
 
 
-
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home',  component: MyHomeComponent },
   { path: 'logIn', component: LoginComponent },
@@ -23,7 +23,10 @@ const routes: Routes = [
   { path: 'about', component: MyAboutComponent },
   { path: 'my-user', component: MyUserComponent, },
   { path: 'my-secon-user', component: MySeconUserComponent, },
-  { path: 'my-loggedin', component: MyLoggedinComponent, },
+  { path: 'my-loggedin',
+           component: MyLoggedinComponent,
+           canActivate: [ EnterDetailsGuardService] },
+           { path: '**', redirectTo: ''}
 ];
 
 @NgModule({
@@ -45,7 +48,8 @@ const routes: Routes = [
     HttpModule
   ],
   providers: [
-    SessionService
+    SessionService,
+    EnterDetailsGuardService
   ],
   bootstrap: [AppComponent]
 })

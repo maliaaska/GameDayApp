@@ -52,23 +52,24 @@ export class SessionService implements CanActivate {
       .map(res => {
         let json = res.json();
         let token = json.token;
-        let user = json.user;
-
+        let user = JSON.stringify(json.user);
+        console.log(user)
         if (token) {
           this.token = token;
-          this.user = {
-            _id: user.id,
-            username: user.username
-          }
           this.isAuthenticated = true;
           localStorage.setItem('token', this.token);
+          localStorage.setItem('user', user);
   
         }
         
-        return this.isAuthenticated, this.router.navigate(['/my-loggedin']), console.log('redirected');
+        return this.isAuthenticated,
+         this.router.navigate(['/my-loggedin']),
+          console.log('redirected')
         
 
       }).catch(this.handleError);
+
+
 
       
   }

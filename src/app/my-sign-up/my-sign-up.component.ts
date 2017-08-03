@@ -10,16 +10,17 @@ import { SessionService } from '../services/session.service';
 })
 export class MySignUpComponent implements OnInit {
 
- user: Object = {
+  user = {
     username: '',
     password: ''
- }
-
+ };
+ username: any;
  error = null;
 
-  constructor(
-    private session: SessionService,
-  ) { }
+  constructor( private session: SessionService) { 
+  
+
+  }
 
   ngOnInit() {
   }

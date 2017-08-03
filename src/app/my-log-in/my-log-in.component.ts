@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 		username: '',
 		password: '',
   }
-  
+  username: any;
   error = null;
 
   constructor(
@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
   login() {
     this.session.login(this.user).subscribe(
       (data) => {
-        console.log('login OK');
-        // this.router.navigate(['/phones']);
+        
+      
       },
       (err) => {
         console.log('Invalid login');
