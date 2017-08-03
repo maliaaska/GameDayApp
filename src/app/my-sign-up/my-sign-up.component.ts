@@ -11,8 +11,7 @@ import { SessionService } from '../services/session.service';
 export class MySignUpComponent implements OnInit {
 
   user = {
-    username: '',
-    password: ''
+  
  };
  username: any;
  error = null;

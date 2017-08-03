@@ -1,21 +1,41 @@
-li {
+
+
+
+
+
+.navbar {
+    background-color: rgb(242, 220, 24);
+    display: flex;
+    opacity: 0.8;
+    padding: 10px;
+    margin: auto;
+}
+
+
+
+.logo {
     float: left;
-    text-align: right;
-    padding-left: 3px;
-    height: inherit;
+    height: 70px;
+    width: 70px;
 }
 
 nav {
-    background-color: #F0B73A;
-    height: 40px;
-
-    
+   float: right;
 }
 
+
 ul {
+    
     margin-left: -20px;
     height: inherit;
     list-style-type: none;
+}
+li {
+   
+    text-align: right;
+    padding-left: 3px;
+    height: inherit;
+    font-size: 24px;
 }
 
 li a {
@@ -24,15 +44,16 @@ li a {
     text-align: center;
     text-decoration: none;
     padding-left: 5px;
-    display: block;
+    display: inline-block;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 li a:hover {
-    background-color: #111;
+    color: #111;
+   
 }
- 
+
  #wrapper{
     position: relative;
     width: 100%;
@@ -44,7 +65,7 @@ li a:hover {
     width: 100%;
     font-size: 16px;
     font-weight: bold;
-    text-shadow: -1px -1px 1px #000, 1px 1px 1px #000;
+    
     position: relative;
     z-index: 100;
 }
@@ -57,24 +78,17 @@ li a:hover {
     left: 0;
     z-index: -100;
 }
-.black {
-    height: 200px;
-    background-color: black;
+.green {
+    height: 150px;
+    background-color: #E3FFBF;
 }
-
-.bck-img {
-  
-    opacity: 0,8;
-    height: 400px;
-    
-}
-
-.winning-person {
-    height: inherit;
-    width: 100%;
+.purple {
+    height: 90%;
+    background-color: rgb(29, 22, 244);
+    opacity: 0.5;
 }
 
 h1 {
    color: white;
-   text-shadow: -1px -1px 1px #000, 1px 1px 1px #000;
+   
 }

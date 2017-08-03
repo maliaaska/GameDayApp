@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { MyHomeComponent } from './my-home/my-home.component';
 import { LoginComponent } from './my-log-in/my-log-in.component';
 import { MySignUpComponent } from './my-sign-up/my-sign-up.component';
-import { MyAboutComponent }  from './my-about/my-about.component';
 import { MyUserComponent } from './my-user/my-user.component';
 import { MySeconUserComponent } from './my-secon-user/my-secon-user.component';
 import { SessionService } from './services/session.service';
@@ -20,7 +19,6 @@ export const routes: Routes = [
   { path: 'home',  component: MyHomeComponent },
   { path: 'logIn', component: LoginComponent },
   { path: 'signUp', component: MySignUpComponent },
-  { path: 'about', component: MyAboutComponent },
   { path: 'my-user', component: MyUserComponent, },
   { path: 'my-secon-user', component: MySeconUserComponent, },
   { path: 'my-loggedin',
@@ -35,7 +33,6 @@ export const routes: Routes = [
     MyHomeComponent,
     LoginComponent,
     MySignUpComponent,
-    MyAboutComponent,
     MyUserComponent,
     MySeconUserComponent,
     MyLoggedinComponent
