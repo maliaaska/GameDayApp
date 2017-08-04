@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import {SessionService } from './services/session.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,4 +9,9 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   title = 'GameDay!';
+
+  user: Object = {
+    // username: '',
+    // password: ''
+ };
 }

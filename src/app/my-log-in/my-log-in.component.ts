@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     this.session.login(this.user).subscribe(
       (data) => {
         
-      
+    
       },
       (err) => {
         console.log('Invalid login');

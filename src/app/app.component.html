@@ -5,26 +5,33 @@
   </div>
 
   <header>
-    <div class="navbar">
-    
-      
-        <img class="logo" [src]= "'../assets/transparentlogo.jpg'">
-
+    <div *ngIf="!this.user" class="navbar">
+      <img class="logo"  [src]= "'../assets/transparentlogo.jpg'">
         <nav>
-          <ul>
-            <li><a [routerLink]="['home']">GameDay!</a></li>
-            <li><a [routerLink]="['logIn']">Log in</a></li>
-            <li><a [routerLink]="['signUp']">Sign up</a></li>    
-          </ul>
-        </nav>
-    
-  </div> 
+        <ul>
+          <li class="title"> {{title}}</li>
+          <li><a [routerLink]="['home']">HomeDay</a></li>
+          <li><a [routerLink]="['logIn']">Log in</a></li>
+          <li><a [routerLink]="['signUp']">Sign up</a></li>    
+        </ul>
+      </nav>
+    </div> 
+</header>
+
+  <header>
+    <div *ngIf="this.user" class="navbar">
+      <img class="logo" [src]= "'../assets/transparentlogo.jpg'">
+        <nav>
+        <ul>
+          <li class="title"> {{title}}</li>
+          <li><a [routerLink]="['home']">HomeDay</a></li>    
+          <button (click)="logout()" class="box"> logout </button>    
+        </ul>
+      </nav>
+    </div> 
 </header>
   <div class="col-12" class="content">
-    <div class="col-12">
-      <h1>
-        {{title}}
-      </h1>
+    <div class="col-12">asdasdsadasdsadasd
       <router-outlet></router-outlet>
     </div>
   

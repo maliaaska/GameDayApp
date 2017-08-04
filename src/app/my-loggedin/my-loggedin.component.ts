@@ -9,21 +9,22 @@ import { Router, CanActivate } from '@angular/router';
 })
 export class MyLoggedinComponent implements OnInit {
   
-
+    username: any;
+    error = null;
 
    user: Object = {
     // username: '',
     // password: ''
  };
-    
+   
+
    checkUser() {
     if(!this.user) {
       this.router.navigate(['/logIn'])
       return 
     }
   }
-
-    error = null;
+   
 
   constructor(private session: SessionService,
               private router: Router)
@@ -38,13 +39,11 @@ export class MyLoggedinComponent implements OnInit {
 
 
 
-  logout() {
+  logout(user) {
 
     this.user = {};
-    localStorage.removeItem('token');
-
+    localStorage.clear();
     this.router.navigate(['/logIn']);
-    console.log('logged out');
+    
   }
-
 }

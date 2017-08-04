@@ -7,8 +7,6 @@ import { AppComponent } from './app.component';
 import { MyHomeComponent } from './my-home/my-home.component';
 import { LoginComponent } from './my-log-in/my-log-in.component';
 import { MySignUpComponent } from './my-sign-up/my-sign-up.component';
-import { MyUserComponent } from './my-user/my-user.component';
-import { MySeconUserComponent } from './my-secon-user/my-secon-user.component';
 import { SessionService } from './services/session.service';
 import { MyLoggedinComponent } from './my-loggedin/my-loggedin.component';
 import { EnterDetailsGuardService } from './services/enter-details-guard.service';
@@ -19,8 +17,6 @@ export const routes: Routes = [
   { path: 'home',  component: MyHomeComponent },
   { path: 'logIn', component: LoginComponent },
   { path: 'signUp', component: MySignUpComponent },
-  { path: 'my-user', component: MyUserComponent, },
-  { path: 'my-secon-user', component: MySeconUserComponent, },
   { path: 'my-loggedin',
            component: MyLoggedinComponent,
            canActivate: [ EnterDetailsGuardService] },
@@ -33,8 +29,6 @@ export const routes: Routes = [
     MyHomeComponent,
     LoginComponent,
     MySignUpComponent,
-    MyUserComponent,
-    MySeconUserComponent,
     MyLoggedinComponent
    
   ],
