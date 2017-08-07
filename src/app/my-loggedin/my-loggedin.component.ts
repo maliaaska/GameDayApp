@@ -37,10 +37,26 @@ export class MyLoggedinComponent implements OnInit {
     }
 
     updateUser(){
-      localStorage.setItem('user', user);
-      this.showEditProfile = false
-      
-      
+      this.showEditProfile = false;
+    
+      var user = {
+        username: this.user['username'],
+        name: this.user['name'],
+        lastName: this.user['lastName'],
+        favouriteSports: this.user['favouriteSports']
+        
+      }
+      console.log(user);
+      console.log('useid',this.user['_id']);
+      this.session.updateUser(user, this.user['_id']).subscribe(
+      (data) => {
+        
+        console.log(data);
+      },
+      (err) => {
+        console.log('something wnet wrong');
+        this.error = err;
+      });
     }
 
   constructor(private session: SessionService,
