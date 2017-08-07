@@ -1,3 +1,48 @@
+<!-- <navbar-in></navbar-in> -->
+<h1>
+    Welcome to your active site {{this.user.username}} !    
+</h1>
+<div class="jumbotron">
+<div class="profile-inf">
+ <table >
+    <tr>
+        <td>Username:</td><td>{{this.user.username}}</td>
+    </tr>
+    <tr>
+        <td>Name:</td><td>{{this.user.name}}</td>
+    </tr>
+    <tr>
+        <td>Last name:</td><td>{{this.user.lastName}}</td>
+    </tr>
+    <tr>
+        <td>Favourite sports: </td><td>{{this.user.favouriteSports}}</td>
+    </tr>
+</table>
+</div>
+<div *ngIf="showEditProfile === true" class="edit-profile"> 
+    <table>
+        <tr>
+            <td><input [(ngModel)]="this.user.username" type="text" maxlength="20"></td>
+        </tr>
+        <tr>
+            <td><input [(ngModel)]="this.user.name" type="text" maxlength="20"></td>
+        </tr>
+        <tr>
+            <td><input [(ngModel)]="this.user.lastName" type="text" maxlength="20"></td>
+        </tr>
+        <tr>
+            <td><input [(ngModel)]="this.user.favouriteSports" type="text" maxlength="150"></td>
+        </tr>
+    </table> 
+    <button (click)="updateUser()" [class.clicked]="showEditProfile === false"> submit </button>
+    </div>
+    
+</div>
 
-You are logged in as {{this.user.username}}
-<button (click)="logout()" class="box"> logout </button>
+ <!-- <h1 *ngIf="this.user._id"> asdadsa </h1>
+ <h1 *ngIf="this.user._id"> asdadsa </h1> -->
+<div class="button">
+ <button (click)="logout()" class="box"> logout </button>
+ <button (click)="edit()" [class.clicked]="showEditProfile === true"> edit profile</button>
+</div>
+

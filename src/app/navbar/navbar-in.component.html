@@ -1,37 +1,33 @@
-
    <div class="background">
     <div class="purple" > </div>
     <div class="green" > </div>
   </div>
 
-   
-      <!-- <div *ngIf="this.user" class="navbar">
+  
+     <!-- <div *ngIf="!this.user" class="navbar">
       <img class="logo" [src]= "'../assets/transparentlogo.jpg'">
         <nav>
         <ul>
           <li class="title"> {{title}}</li>
           <li><a [routerLink]="['home']">HomeDay</a></li>    
-          
           <button (click)="logout()" class="box"> logout </button>    
         </ul>
       </nav>
-    </div>      -->
-  
-       <div class="navbar">
+    </div>     
+  <p>{{this.user}}</p> -->
+
+
+      <!-- <div *ngIf="!this.user" class="navbar">
       <img class="logo"  [src]= "'../assets/transparentlogo.jpg'">
         <nav>
         <ul>
-         
+          <li class="title"> {{title}}</li>
+          <li><a [routerLink]="['home']">HomeDay</a></li>
           <li><a [routerLink]="['logIn']">Log in</a></li>
-          <li><a [routerLink]="['signUp']">Sign up</a></li>  
-          <!-- <button (click)="logout()" class="box"> logout </button>   -->
+          <li><a [routerLink]="['signUp']">Sign up</a></li>    
         </ul>
       </nav>
-    </div>       
-   
-  <div class="col-12" class="content">
-    <div class="col-12">
-      <router-outlet></router-outlet>
-    </div>
-  
-</div>
+    </div>     -->
+    <div>
+      <router-outlet></router-outlet>   
+    </div>   

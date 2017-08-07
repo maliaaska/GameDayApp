@@ -1,0 +1,13 @@
+.profile-inf {
+    float: left; 
+    display: flex;
+    width: 360px;
+}
+
+.edit-profile{
+    display:flex;
+
+}
+.button {
+    clear:both
+}

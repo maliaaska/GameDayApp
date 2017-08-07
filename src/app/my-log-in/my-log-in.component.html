@@ -1,19 +1,27 @@
 
-<h2>Login</h2>
+<!-- <navbar></navbar> -->
+       <!-- <div *ngIf="this.user" class="navbar">
+      <img class="logo"  [src]= "'../assets/transparentlogo.jpg'">
+        <nav>
+        <ul>
+          <li class="title"> {{title}}</li>
+          <li><a [routerLink]="['home']">HomeDay</a></li>
+          <li><a [routerLink]="['logIn']">Log in</a></li>
+          <li><a [routerLink]="['signUp']">Sign up</a></li>    
+        </ul>
+      </nav>
+    </div>     
+    <div>
+      <router-outlet></router-outlet>   
+    </div> -->
 
 <form>
-  <div *ngIf="error">
-    {{ error }}
-  </div>
-  <p>
-    <label for="username">Username</label>
-    <input type="text" [(ngModel)]="user.username" name="username">
-  </p>
+  <h2> Login </h2>
+  <label> Username </label>
+  <input type="text" [(ngModel)]="user.username" name="username"/>
+  <br>
+  <label> Password </label>
+  <input type="password" [(ngModel)]="user.password" name="password"/>
 
-  <p>
-    <label for="password">Password</label>
-    <input type="text" [(ngModel)]="user.password" name="password">
-  </p>
-
-  <button (click)="login()">Login</button>
+  <button (click)="login()"> login </button>
 </form>

@@ -1,0 +1,30 @@
+  
+  
+      <!-- <div *ngIf="!this.user" class="navbar">
+      <img class="logo" [src]= "'../assets/transparentlogo.jpg'">
+        <nav>
+        <ul>
+          <li class="title"> {{title}}</li>
+          <li><a [routerLink]="['home']">HomeDay</a></li>    
+          <button (click)="logout()" class="box"> logout </button>    
+        </ul>
+      </nav>
+    </div>     
+  <p>{{this.user}}</p>  -->
+
+
+       <div *ngIf="this.user._id" class="navbar">
+      <img class="logo"  [src]= "'../assets/transparentlogo.jpg'">
+        <nav>
+        <ul>
+          <li class="title"> {{title}}</li>
+          <li><a [routerLink]="['home']">HomeDay</a></li>
+          <li><a [routerLink]="['logIn']">Log in</a></li>
+          <li><a [routerLink]="['signUp']">Sign up</a></li>    
+        </ul>
+      </nav>
+    </div>     
+    <div>
+      <router-outlet></router-outlet>   
+    </div>
+    

@@ -13,8 +13,8 @@ export class MySignUpComponent implements OnInit {
   user = {
   
  };
- username: any;
- error = null;
+    username: any;
+    error = null;
 
   constructor( private session: SessionService) { 
   

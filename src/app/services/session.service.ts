@@ -12,7 +12,7 @@ export class SessionService implements CanActivate {
   public user = {};
   public token = '';
   public isAuthenticated = false;
-
+ 
   constructor(
     private http: Http,
     private router: Router
@@ -45,6 +45,17 @@ export class SessionService implements CanActivate {
       this.router.navigate(['/login']);
       return false;
     }
+  }
+
+  updateUser(user, userid){
+    return this.http.put(`${this.BASE_URL}/user/${userid}`, user, this.requestOptions())
+      .map((res) => res.json())
+      .catch(this.handleError);
+
+  }
+    private requestOptions(): RequestOptions {
+    let headers = new Headers({ 'Authorization': `JWT ${this.token}` });
+    return new RequestOptions({ headers: headers });
   }
 
   login(user) {
