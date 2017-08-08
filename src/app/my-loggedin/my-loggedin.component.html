@@ -64,5 +64,22 @@
     <button (click)="logout()" class="box"> logout </button>
     <button (click)="edit()" [class.clicked]="showEditProfile === true"> edit profile</button>
 </div>
+<form (submit)="addMarker()">
+    <label> Location Name </label>
+    <input type="text" [(ngModel)]="markerName" name="markerName">
+
+    <label> Latitude </label>
+    <input type="text" [(ngModel)]="markerLat" name="markerLat">
+
+    <label> Longitude </label>
+    <input type="text" [(ngModel)]="markerLng" name="markerLng">
+
+    <label> Draggable </label>
+    <select  [(ngModel)]="markerDraggable" name="markerDraggable">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+    </select>
+    <input type="submit" value="Map it">
+</form>
 
     

@@ -46,6 +46,7 @@ export const routes: Routes = [
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDWNE3ZbAxLeSjbIn-X5vcTmWM1ON2wOW0'
     })
+    
   ],
   providers: [
     SessionService,

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SessionService } from '../services/session.service';
 import { Router, CanActivate } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 // import { NDV_DIRECTIVES } from 'angular2-click-to-edit/components';
-
+import { MarkerService } from '../services/marker.service';
 
 // import { GlobalEventsManager } from "../services/global-events-manager.service";
 
@@ -10,7 +11,7 @@ import { Router, CanActivate } from '@angular/router';
   selector: 'app-my-loggedin',
   templateUrl: './my-loggedin.component.html',
   styleUrls: ['./my-loggedin.component.css'],
-  providers: [SessionService],
+  providers: [SessionService, MarkerService],
   // directives: [NDV_DIRECTIVES]
 })
 export class MyLoggedinComponent implements OnInit {
@@ -21,27 +22,19 @@ export class MyLoggedinComponent implements OnInit {
   zoom: number = 12;
   lat: number = 41.383155;
   lng: number = 2.177526;
+  //Values 
+  markerName: string;
+  markerLat: string;
+  markerLng: string;
+  markerDraggable: string;
+  markers: marker[];
+  
+  
+  canActive(){
+    console.log('can active passed');
+  };
 
-  markers: marker[] = [
-    {
-      name: 'IR0Nh@ck Volleyball',
-      lat: 41.393594,
-      lng: 2.206728,
-      draggable: true
-    },
-     {
-      name: 'IR0Nh@ck Final Fiesta',
-      lat: 41.397823,
-      lng: 2.190264,
-      draggable: true
-    },
-     {
-      name: 'Skate Park',
-      lat: 41.398061,
-      lng: 2.210560,
-      draggable: true
-    }
-  ]
+
   clickedMarker(marker: marker, index:number){
     console.log("clicked marker" +marker.name+ "at index" +index)
   }
@@ -58,16 +51,36 @@ export class MyLoggedinComponent implements OnInit {
   }
     markerDragEnd(marker: any, $event: any) {
       console.log('dragEnd', marker, $event);
+
       var updMarker = {
         name: marker.name,
         lat: parseFloat(marker.lat),
         lng: parseFloat(marker.lng),
         draggable: false
       }
+
       var newLat = $event.coords.lat;
       var newLng = $event.coords.lng;
     }
 
+
+    addMarker(){
+      console.log('Adding Marker');
+      if(this.markerDraggable == 'yes') {
+        var isDraggable = true;
+      }else{
+        var isDraggable = false;
+      }
+
+      var newMarker = {
+        name:this.markerName,
+        lat: parseFloat(this.markerLat),
+        lng: parseFloat(this.markerLng),
+        draggable:isDraggable
+      }
+      this.markers.push(newMarker); 
+      this._markerService.addMarker(newMarker);
+    }
 
   public  user: Object = {
           username: String,
@@ -86,10 +99,10 @@ export class MyLoggedinComponent implements OnInit {
    edit() {
      
       this.showEditProfile = true
-    }
+  }
 
-    updateUser(){
-      this.showEditProfile = false;
+  updateUser(){
+     this.showEditProfile = false;
     
       var user = {
         username: this.user['username'],
@@ -114,9 +127,11 @@ export class MyLoggedinComponent implements OnInit {
   constructor(private session: SessionService,
               private router: Router,
               private sessionService: SessionService, 
+              private _markerService: MarkerService
               // private globalEventsManager: GlobalEventsManager
-              )
-              { }
+              ){ 
+                this.markers = this._markerService.getMarkers();
+               }
 
   //  private onLoginSuccessfully(data : any) : void {
   //   /* --> HERE: you tell the global event manger to show the nav bar */
