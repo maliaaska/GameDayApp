@@ -13,9 +13,7 @@ import { SessionService } from './services/session.service';
 export class AppComponent {
  
   title: string = 'Gameday!';
-  lat: number = 51.678418;
-  lng: number = 7.809007;
-
+  
   user: Object = {
     // username: '',
     // password: ''
@@ -30,4 +28,8 @@ constructor(private session: SessionService,)
     
 
   }
+
+  // Marker Type
+
 }
+

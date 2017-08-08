@@ -15,7 +15,59 @@ import { Router, CanActivate } from '@angular/router';
 })
 export class MyLoggedinComponent implements OnInit {
 
-    error = null;
+  error = null;
+
+
+  zoom: number = 12;
+  lat: number = 41.383155;
+  lng: number = 2.177526;
+
+  markers: marker[] = [
+    {
+      name: 'IR0Nh@ck Volleyball',
+      lat: 41.393594,
+      lng: 2.206728,
+      draggable: true
+    },
+     {
+      name: 'IR0Nh@ck Final Fiesta',
+      lat: 41.397823,
+      lng: 2.190264,
+      draggable: true
+    },
+     {
+      name: 'Skate Park',
+      lat: 41.398061,
+      lng: 2.210560,
+      draggable: true
+    }
+  ]
+  clickedMarker(marker: marker, index:number){
+    console.log("clicked marker" +marker.name+ "at index" +index)
+  }
+
+  mapClicked($event: any) {
+    console.log('Map clicked')
+    var newMarker = {
+      name: 'Untitled',
+      lat: $event.coords.lat,
+      lng: $event.coords.lng,
+      draggable:false
+    }
+      this.markers.push(newMarker);
+  }
+    markerDragEnd(marker: any, $event: any) {
+      console.log('dragEnd', marker, $event);
+      var updMarker = {
+        name: marker.name,
+        lat: parseFloat(marker.lat),
+        lng: parseFloat(marker.lng),
+        draggable: false
+      }
+      var newLat = $event.coords.lat;
+      var newLng = $event.coords.lng;
+    }
+
 
   public  user: Object = {
           username: String,
@@ -91,3 +143,10 @@ export class MyLoggedinComponent implements OnInit {
     
   }
 }
+
+interface marker {
+    name?: string;
+    lat: number;
+    lng: number;
+    draggable: boolean;
+  }

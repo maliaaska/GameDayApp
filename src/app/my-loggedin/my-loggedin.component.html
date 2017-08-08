@@ -35,12 +35,29 @@
         </tr>
     </table> 
     <button (click)="updateUser()" [class.clicked]="showEditProfile === false"> submit </button>
-    </div>
+</div>
     
 </div>
-<agm-map [latitude]="lat" [longitude]="lng">
-        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-    </agm-map>
+<agm-map 
+    [latitude]="lat"
+    [longitude]="lng"
+    [zoom]="zoom"
+    [disableDefaultUI]= false
+    [zoomControl]= false
+    (mapClick)="mapClicked($event)">
+    
+     <agm-marker 
+        *ngFor="let m of markers; let i = index"
+        (markerClick)="clickedMarker(m, i)"
+        [longitude]="m.lng"
+        [latitude]="m.lat"
+        [markerDraggable]="m.draggable"
+        (dragEnd)="markerDragEnd(m, $event)">
+         <agm-info-window>
+            <strong>{{m.name}}</strong>
+        </agm-info-window> 
+     </agm-marker> 
+</agm-map>
 
 
  <div class="button">

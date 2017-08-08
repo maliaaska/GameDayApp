@@ -6,6 +6,7 @@
 
 .edit-profile{
     display:flex;
+    float: left;
 
 }
 .button {
