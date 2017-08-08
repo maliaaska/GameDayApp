@@ -61,6 +61,8 @@ export class MyLoggedinComponent implements OnInit {
 
       var newLat = $event.coords.lat;
       var newLng = $event.coords.lng;
+      
+      this._markerService.updateMarker(updMarker, newLat, newLng);
     }
 
 
@@ -81,6 +83,17 @@ export class MyLoggedinComponent implements OnInit {
       this.markers.push(newMarker); 
       this._markerService.addMarker(newMarker);
     }
+
+
+    removeMarker(marker) {
+      console.log('Marker removed') 
+      for(var i = 0; i< this.markers.length; i++){
+        if(marker.lat == this.markers[i].lat && marker.lng == this.markers[i].lng) {
+          this.markers.splice(i, 1);
+        }
+      } 
+     this._markerService.removeMarker(marker);
+    }   
 
   public  user: Object = {
           username: String,

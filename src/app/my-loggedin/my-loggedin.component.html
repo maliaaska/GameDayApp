@@ -55,6 +55,8 @@
         (dragEnd)="markerDragEnd(m, $event)">
          <agm-info-window>
             <strong>{{m.name}}</strong>
+            <br>
+            <a class="delete" (click)="removeMarker(m)">Delete the Game</a>
         </agm-info-window> 
      </agm-marker> 
 </agm-map>

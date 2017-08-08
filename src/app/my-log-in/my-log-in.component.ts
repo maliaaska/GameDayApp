@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
     // private session: SessionService,
     private router: Router,
     private sessionService: SessionService,
+    
     // private globalEventsManager: GlobalEventsManager
   ) { }
 
