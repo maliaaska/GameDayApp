@@ -38,11 +38,14 @@
     </div>
     
 </div>
+<agm-map [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
 
- <!-- <h1 *ngIf="this.user._id"> asdadsa </h1>
- <h1 *ngIf="this.user._id"> asdadsa </h1> -->
-<div class="button">
- <button (click)="logout()" class="box"> logout </button>
- <button (click)="edit()" [class.clicked]="showEditProfile === true"> edit profile</button>
+
+ <div class="button">
+    <button (click)="logout()" class="box"> logout </button>
+    <button (click)="edit()" [class.clicked]="showEditProfile === true"> edit profile</button>
 </div>
 
+    

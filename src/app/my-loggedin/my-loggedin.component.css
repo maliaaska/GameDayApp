@@ -9,5 +9,16 @@
 
 }
 .button {
-    clear:both
+    clear:both;
+    height: 20px;
+   
+}
+agm-map {
+    height: 300px;
+    width: 500px;
+    display: flex;
+    align-self: right;
+    float: right;
+    position: relative;
+
 }

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from "@angular/router";
 import { AppComponent } from './app.component';
-
+import { AgmCoreModule } from '@agm/core';
 import { LoginComponent } from './my-log-in/my-log-in.component';
 import { MySignUpComponent } from './my-sign-up/my-sign-up.component';
 import { SessionService } from './services/session.service';
@@ -34,6 +34,7 @@ export const routes: Routes = [
     MyLoggedinComponent,
     TopNavbarComponent,
     TopNavbarInComponent,
+    
    
    
   ],
@@ -41,7 +42,10 @@ export const routes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    HttpModule
+    HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDWNE3ZbAxLeSjbIn-X5vcTmWM1ON2wOW0'
+    })
   ],
   providers: [
     SessionService,
