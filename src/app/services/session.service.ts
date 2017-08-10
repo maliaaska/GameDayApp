@@ -8,7 +8,6 @@ import { Router, CanActivate } from '@angular/router';
 @Injectable()
 export class SessionService implements CanActivate {
   BASE_URL: string = 'http://localhost:3000';
-
   public user = {};
   public token = '';
   public isAuthenticated = false;
@@ -53,6 +52,9 @@ export class SessionService implements CanActivate {
       .catch(this.handleError);
 
   }
+
+  
+
     private requestOptions(): RequestOptions {
     let headers = new Headers({ 'Authorization': `JWT ${this.token}` });
     return new RequestOptions({ headers: headers });

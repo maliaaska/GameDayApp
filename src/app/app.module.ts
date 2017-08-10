@@ -8,6 +8,7 @@ import { AgmCoreModule } from '@agm/core';
 import { LoginComponent } from './my-log-in/my-log-in.component';
 import { MySignUpComponent } from './my-sign-up/my-sign-up.component';
 import { SessionService } from './services/session.service';
+import { MarkerService } from './services/marker.service';
 import { MyLoggedinComponent } from './my-loggedin/my-loggedin.component';
 import { EnterDetailsGuardService } from './services/enter-details-guard.service';
 import { GlobalEventsManager}       from './services/global-events-manager.service';
@@ -35,6 +36,7 @@ export const routes: Routes = [
     TopNavbarComponent,
     TopNavbarInComponent,
     
+    
    
    
   ],
@@ -49,6 +51,7 @@ export const routes: Routes = [
     
   ],
   providers: [
+    MarkerService,
     SessionService,
     EnterDetailsGuardService,
     GlobalEventsManager

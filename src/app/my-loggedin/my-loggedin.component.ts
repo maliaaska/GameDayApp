@@ -27,9 +27,20 @@ export class MyLoggedinComponent implements OnInit {
   markerLat: string;
   markerLng: string;
   markerDraggable: string;
+
+  marker;
   markers: marker[];
   
-  
+    constructor(private session: SessionService,
+              private router: Router,
+              private sessionService: SessionService, 
+              private _markerService: MarkerService,
+              private markerDB : MarkerService
+              // private globalEventsManager: GlobalEventsManager
+              ){ 
+                this.markers = this._markerService.getMarkers();
+               }
+
   canActive(){
     console.log('can active passed');
   };
@@ -75,13 +86,19 @@ export class MyLoggedinComponent implements OnInit {
       }
 
       var newMarker = {
-        name:this.markerName,
+        markerName: this.markerName,
         lat: parseFloat(this.markerLat),
         lng: parseFloat(this.markerLng),
         draggable:isDraggable
       }
-      this.markers.push(newMarker); 
-      this._markerService.addMarker(newMarker);
+
+      //save marker to database, call service
+      this._markerService.addMarker(newMarker).subscribe((res) => {
+         this.markers.push(newMarker);
+
+      });
+
+     
     }
 
 
@@ -137,27 +154,16 @@ export class MyLoggedinComponent implements OnInit {
       });
     }
 
-  constructor(private session: SessionService,
-              private router: Router,
-              private sessionService: SessionService, 
-              private _markerService: MarkerService
-              // private globalEventsManager: GlobalEventsManager
-              ){ 
-                this.markers = this._markerService.getMarkers();
-               }
-
-  //  private onLoginSuccessfully(data : any) : void {
-  //   /* --> HERE: you tell the global event manger to show the nav bar */
-  //   this.globalEventsManager.showNavBar(true);
-  //   this.router.navigate(['Welcome']);
-
-  // }
 
   ngOnInit() {
         console.log("testing",JSON.parse(localStorage.getItem("user")))
         this.user = JSON.parse(localStorage.getItem("user"))
-        console.log(this.user)
-
+        console.log(this.user);
+        
+        // this.m.getMarkersDB()
+        // .subscribe((marker) => {
+        // this.marker = marker;
+      // });
 
   }
 
