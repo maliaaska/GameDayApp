@@ -12,7 +12,7 @@ import { MarkerService } from '../services/marker.service';
   templateUrl: './my-loggedin.component.html',
   styleUrls: ['./my-loggedin.component.css'],
   providers: [SessionService, MarkerService],
-  // directives: [NDV_DIRECTIVES]
+
 })
 export class MyLoggedinComponent implements OnInit {
 
@@ -28,17 +28,16 @@ export class MyLoggedinComponent implements OnInit {
   markerLng: string;
   markerDraggable: string;
 
-  marker;
   markers: marker[];
   
     constructor(private session: SessionService,
-              private router: Router,
-              private sessionService: SessionService, 
-              private _markerService: MarkerService,
-              private markerDB : MarkerService
+                private router: Router,
+                private sessionService: SessionService, 
+                private _markerService: MarkerService,
+                private markerDB : MarkerService
               // private globalEventsManager: GlobalEventsManager
               ){ 
-                this.markers = this._markerService.getMarkers();
+              
                }
 
   canActive(){
@@ -159,11 +158,11 @@ export class MyLoggedinComponent implements OnInit {
         console.log("testing",JSON.parse(localStorage.getItem("user")))
         this.user = JSON.parse(localStorage.getItem("user"))
         console.log(this.user);
-        
-        // this.m.getMarkersDB()
-        // .subscribe((marker) => {
-        // this.marker = marker;
-      // });
+        this._markerService.getMarkers().subscribe((markers) => {
+          console.log(markers);
+          
+       })
+ 
 
   }
 

@@ -13,14 +13,13 @@ import { SessionService } from '../services/session.service';
 export class MarkerService extends Init {
     BASE_URL: string = 'http://localhost:3000';
     public marker = {};
-    public markerDB = {};
 
     constructor(private http: Http,
                 private router: Router,
                 private session: SessionService) {
         super();
         console.log ('MarkerService Initialized...');
-        this.load();
+        
         
     }
     handleError(e) {
@@ -28,9 +27,12 @@ export class MarkerService extends Init {
   }
 
     getMarkers(){
-
-        var markers = JSON.parse(localStorage.getItem('markers'), );
-        return markers 
+      return this.http.get(`${this.BASE_URL}/marker`, this.requestOptions())
+      .map((res) => res.json())
+      .catch(this.handleError);
+  
+     //   var markers = JSON.parse(localStorage.getItem('markers'), );
+     //   return markers 
     }
 
     getMarkersDB(){
