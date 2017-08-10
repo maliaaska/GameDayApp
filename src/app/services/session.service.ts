@@ -50,7 +50,7 @@ export class SessionService implements CanActivate {
     return this.http.put(`${this.BASE_URL}/user/${userid}`, user, this.requestOptions())
       .map((res) => res.json())
       .catch(this.handleError);
-
+      
   }
 
   

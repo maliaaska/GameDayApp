@@ -15,13 +15,42 @@
       <router-outlet></router-outlet>   
     </div> -->
 
-<form>
-  <h2> Login </h2>
-  <label> Username </label>
-  <input type="text" [(ngModel)]="user.username" name="username"/>
-  <br>
-  <label> Password </label>
-  <input type="password" [(ngModel)]="user.password" name="password"/>
+<!-- <form class="form-horizontal">
+  <fieldset>
+    <legend>Login</legend>
+    <div class="form-group">
+    <label for="inputEmail" class="col-lg-2 control-label"> Username </label>
+    <div class="col-lg-10">
+      <input type="text" class="form-control" id="inputEmail" placeholder="Email" [(ngModel)]="user.username" name="username"/>
+    </div>
+      <br>
+    <label> Password </label>
+    <input type="password" [(ngModel)]="user.password" name="password"/>
 
-  <button (click)="login()"> login </button>
+    <button (click)="login()"> login </button>
+  </div>
+</form>
+ -->
+
+<form class="form-horizontal">
+  <fieldset>
+    <legend>Login</legend>
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label"> Username </label>
+      <div class="col-lg-10">
+      <input type="text" class="form-control" id="inputEmail" placeholder="Email" [(ngModel)]="user.username" name="username"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+      <div class="col-lg-10">
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password" [(ngModel)]="user.password" name="password"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button (click)="login()"> login </button>
+      </div>
+    </div>
+  </fieldset>
 </form>

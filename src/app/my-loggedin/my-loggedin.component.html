@@ -1,17 +1,17 @@
-<!-- <navbar-in></navbar-in> -->
-<h1>
+
+<h1 class="breadcrumb">
     Welcome to your active site {{this.user.username}} !    
 </h1>
-<div class="jumbotron">
+
 <div class="profile-inf">
  <table >
-    <tr>
+    <tr class="tr">
         <td>Username:</td><td>{{this.user.username}}</td>
-    </tr>
-    <tr>
+    </tr >
+    <tr class="tr">
         <td>Name:</td><td>{{this.user.name}}</td>
     </tr>
-    <tr>
+    <tr class="tr">
         <td>Last name:</td><td>{{this.user.lastName}}</td>
     </tr>
     <tr>
@@ -20,24 +20,26 @@
 </table>
 </div>
 <div *ngIf="showEditProfile === true" class="edit-profile"> 
-    <table>
-        <tr>
+    <table  >
+        <tr class="success">
             <td><input [(ngModel)]="this.user.username" type="text" maxlength="20"></td>
         </tr>
-        <tr>
+        <tr class="success">
             <td><input [(ngModel)]="this.user.name" type="text" maxlength="20"></td>
         </tr>
-        <tr>
+        <tr class="success">
             <td><input [(ngModel)]="this.user.lastName" type="text" maxlength="20"></td>
         </tr>
-        <tr>
+        <tr class="success">
             <td><input [(ngModel)]="this.user.favouriteSports" type="text" maxlength="150"></td>
         </tr>
     </table> 
-    <button (click)="updateUser()" [class.clicked]="showEditProfile === false"> submit </button>
+    <button (click)="updateUser()" [class.clicked]="showEditProfile === false" class="btn btn-success"> submit </button>
 </div>
-    
-</div>
+
+
+
+<div>
 <agm-map 
     [latitude]="lat"
     [longitude]="lng"
@@ -57,15 +59,17 @@
             <strong>{{marker.name}}</strong>
             <br>
             <a class="delete" (click)="removeMarker(marker)">Delete the Game</a>
-        </agm-info-window> 
-     </agm-marker> 
+    </agm-info-window> 
+</agm-marker> 
 </agm-map>
-
+</div>
 
  <div class="button">
-    <button (click)="logout()" class="box"> logout </button>
-    <button (click)="edit()" [class.clicked]="showEditProfile === true"> edit profile</button>
+    <button (click)="logout()" class="box" class="btn btn-success" > logout </button>
+    <button (click)="edit()" [class.clicked]="showEditProfile === true" class="btn btn-success"> edit profile</button>
 </div>
+
+<div class="addMarker">
 <form (submit)="addMarker()">
     <label> Location Name </label>
     <input type="text" [(ngModel)]="markerName" name="markerName">
@@ -81,6 +85,6 @@
         <option value="no">No</option>
         <option value="yes">Yes</option>
     </select>
-    <input type="submit" value="Map it">
+    <input type="submit" class="btn btn-success" value="Map it">
 </form>
-
+</div>

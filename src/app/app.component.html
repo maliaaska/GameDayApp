@@ -1,8 +1,8 @@
 
-   <div class="background">
+  <div class="background">
     <div class="purple" > </div>
     <div class="green" > </div>
-  </div>
+  </div> 
 
    
       <!-- <div *ngIf="this.user" class="navbar">
@@ -17,21 +17,18 @@
       </nav>
     </div>      -->
   
-       <div class="navbar">
+    <div class="navbar " >
       <img class="logo"  [src]= "'../assets/transparentlogo.jpg'">
         <nav>
-        <ul>
-         
+        <ul>         
           <li><a [routerLink]="['logIn']">Log in</a></li>
           <li><a [routerLink]="['signUp']">Sign up</a></li>  
           <!-- <button (click)="logout()" class="box"> logout </button>   -->
         </ul>
       </nav>
-    </div>       
-   
-  <div class="col-12" class="content">
-    <div class="col-12">
+    </div>   
+
+
       <router-outlet></router-outlet>
-    </div>
+    
   
-</div>
