@@ -28,7 +28,7 @@ export class MyLoggedinComponent implements OnInit {
   markerLng: string;
   markerDraggable: string;
 
-  markers: marker[];
+  markers: marker [];
   
     constructor(private session: SessionService,
                 private router: Router,
@@ -158,9 +158,11 @@ export class MyLoggedinComponent implements OnInit {
         console.log("testing",JSON.parse(localStorage.getItem("user")))
         this.user = JSON.parse(localStorage.getItem("user"))
         console.log(this.user);
+
+        // beneath you retrieve markers database and then you assign them to array of markers whats above
         this._markerService.getMarkers().subscribe((markers) => {
           console.log(markers);
-          
+          this.markers = markers;
        })
  
 

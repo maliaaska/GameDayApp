@@ -53,7 +53,7 @@
         [latitude]="marker.lat"
         [markerDraggable]="marker.draggable"
         (dragEnd)="markerDragEnd(marker, $event)">
-         <agm-info-window>
+    <agm-info-window>
             <strong>{{marker.name}}</strong>
             <br>
             <a class="delete" (click)="removeMarker(marker)">Delete the Game</a>
