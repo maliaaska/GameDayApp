@@ -39,3 +39,20 @@ div {
     border: 2px solid #275C66;
     border-radius: 5px;
 } */
+
+button {
+    background-image: linear-gradient(#44dd88, #2eb489);
+    background-color: #44dd88;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-family: "Helvetica";
+    font-weight: 100;
+    font-size: 10pt;
+    padding: 10px;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: black;
+}
