@@ -1,90 +1,103 @@
+<section>
+    <h1 class="breadcrumb">
+        Welcome to your active site {{this.user.username}} !    
+    </h1>
+</section>
+<section class="one-fourth" >
+    <div class="profile-inf">
+        <table >
+            <tr class="tr">
+                <td>Username:</td><td>{{this.user.username}}</td>
+            </tr >
+            <tr class="tr">
+                <td>Name:</td><td>{{this.user.name}}</td>
+            </tr>
+            <tr class="tr">
+                <td>Last name:</td><td>{{this.user.lastName}}</td>
+            </tr>
+            <tr>
+                <td>Favourite sports: </td><td>{{this.user.favouriteSports}}</td>
+            </tr>
+        </table>
+    </div>
+   
+    <div *ngIf="showEditProfile === true" class="edit-profile"> 
+       
+        <table  >
+            <tr class="success">
+                <td><input [(ngModel)]="this.user.username" type="text" maxlength="20"></td>
+            </tr>
+            <tr class="success">
+                <td><input [(ngModel)]="this.user.name" type="text" maxlength="20"></td>
+            </tr>
+            <tr class="success">
+                <td><input [(ngModel)]="this.user.lastName" type="text" maxlength="20"></td>
+            </tr>
+            <tr class="success">
+                <td><input [(ngModel)]="this.user.favouriteSports" type="text" maxlength="150"></td>
+            </tr>
+        </table> 
+        <button (click)="updateUser()" [class.clicked]="showEditProfile === false" class="btn btn-success"> submit </button>
 
-<h1 class="breadcrumb">
-    Welcome to your active site {{this.user.username}} !    
-</h1>
-
-<div class="profile-inf">
- <table >
-    <tr class="tr">
-        <td>Username:</td><td>{{this.user.username}}</td>
-    </tr >
-    <tr class="tr">
-        <td>Name:</td><td>{{this.user.name}}</td>
-    </tr>
-    <tr class="tr">
-        <td>Last name:</td><td>{{this.user.lastName}}</td>
-    </tr>
-    <tr>
-        <td>Favourite sports: </td><td>{{this.user.favouriteSports}}</td>
-    </tr>
-</table>
-</div>
-<div *ngIf="showEditProfile === true" class="edit-profile"> 
-    <table  >
-        <tr class="success">
-            <td><input [(ngModel)]="this.user.username" type="text" maxlength="20"></td>
-        </tr>
-        <tr class="success">
-            <td><input [(ngModel)]="this.user.name" type="text" maxlength="20"></td>
-        </tr>
-        <tr class="success">
-            <td><input [(ngModel)]="this.user.lastName" type="text" maxlength="20"></td>
-        </tr>
-        <tr class="success">
-            <td><input [(ngModel)]="this.user.favouriteSports" type="text" maxlength="150"></td>
-        </tr>
-    </table> 
-    <button (click)="updateUser()" [class.clicked]="showEditProfile === false" class="btn btn-success"> submit </button>
-</div>
+        <p> {{ feedback }} </p>
+    </div>
+    <div class="button">
+            <button (click)="logout()" class="box" class="btn btn-success" > logout </button>
+            <button (click)="edit()" [class.clicked]="showEditProfile === true" class="btn btn-success"> edit profile</button>
+    </div>
+</section>
 
 
+<section class="one-fourth" class="map">
+    <div >
+        <agm-map class="col-3"
+            [latitude]="lat"
+            [longitude]="lng"
+            [zoom]="zoom"
+            [disableDefaultUI]= false
+            [zoomControl]= false
+            (mapClick)="mapClicked($event)">
+            
+            <agm-marker 
+               *ngFor="let marker of markers; let i = index"
+                (markerClick)="clickedMarker(marker, i)"
+                [longitude]="marker.lng"
+                [latitude]="marker.lat"
+                [markerDraggable]="marker.draggable"
+                (dragEnd)="markerDragEnd(marker, $event)">
+            <agm-info-window>
+                    <strong>{{marker.markerName}}</strong>
+                    <br>
+                    <a class="delete" (click)="removeMarker(marker)">Delete the Game</a>
+            </agm-info-window> 
+        </agm-marker> 
+        </agm-map>
+    </div>
+</section>
 
-<div>
-<agm-map 
-    [latitude]="lat"
-    [longitude]="lng"
-    [zoom]="zoom"
-    [disableDefaultUI]= false
-    [zoomControl]= false
-    (mapClick)="mapClicked($event)">
-    
-     <agm-marker 
-        *ngFor="let marker of markers; let i = index"
-        (markerClick)="clickedMarker(marker, i)"
-        [longitude]="marker.lng"
-        [latitude]="marker.lat"
-        [markerDraggable]="marker.draggable"
-        (dragEnd)="markerDragEnd(marker, $event)">
-    <agm-info-window>
-            <strong>{{marker.name}}</strong>
-            <br>
-            <a class="delete" (click)="removeMarker(marker)">Delete the Game</a>
-    </agm-info-window> 
-</agm-marker> 
-</agm-map>
-</div>
+<section class="one-fourth" class="addMarker">
+    <div>
+        <form (submit)="addMarker()" id="marker-form">
+            <label> Name </label>
+            <input type="text" [(ngModel)]="markerName" name="markerName">
+            
+            <label> Latitude </label>
+            <input type="text" [(ngModel)]="markerLat" name="markerLat">
 
- <div class="button">
-    <button (click)="logout()" class="box" class="btn btn-success" > logout </button>
-    <button (click)="edit()" [class.clicked]="showEditProfile === true" class="btn btn-success"> edit profile</button>
-</div>
+            <label> Longitude </label>
+            <input type="text" [(ngModel)]="markerLng" name="markerLng">
 
-<div class="addMarker">
-<form (submit)="addMarker()">
-    <label> Location Name </label>
-    <input type="text" [(ngModel)]="markerName" name="markerName">
-
-    <label> Latitude </label>
-    <input type="text" [(ngModel)]="markerLat" name="markerLat">
-
-    <label> Longitude </label>
-    <input type="text" [(ngModel)]="markerLng" name="markerLng">
-
-    <label> Draggable </label>
-    <select  [(ngModel)]="markerDraggable" name="markerDraggable">
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-    </select>
-    <input type="submit" class="btn btn-success" value="Map it">
-</form>
-</div>
+            <label> Draggable </label>
+            <select  [(ngModel)]="markerDraggable" name="markerDraggable">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select><br>
+            <input type="submit" class="btn btn-success" value="Map it">
+        </form>
+    </div>
+</section>
+<!-- <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+<button type="button" class="btn btn-success btn-xs"
+                                 (click)="imageUpload()" > 
+                                <span class="glyphicon glyphicon-upload"></span> Upload
+</button> -->

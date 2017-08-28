@@ -53,6 +53,16 @@ export class SessionService implements CanActivate {
       
   }
 
+  imageUpload(user, userid) {
+
+     return this.http.put(`${this.BASE_URL}/user/${userid}`, user, this.requestOptions())
+      .map((res) => res.json())
+      .catch(this.handleError);
+
+      
+      
+  }
+
   
 
     private requestOptions(): RequestOptions {

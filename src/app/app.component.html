@@ -1,35 +1,42 @@
 
-  <div class="background">
+  <!-- <div class="background">
     <div class="purple" > </div>
     <div class="green" > </div>
-  </div> 
+  </div>  -->
 
    
-      <!-- <div *ngIf="this.user" class="navbar">
-      <img class="logo" [src]= "'../assets/transparentlogo.jpg'">
-        <nav>
-        <ul>
-          <li class="title"> {{title}}</li>
-          <li><a [routerLink]="['home']">HomeDay</a></li>    
-          
-          <button (click)="logout()" class="box"> logout </button>    
-        </ul>
-      </nav>
-    </div>      -->
   
-    <div class="navbar " >
+  <header>
+    <div id="header-inner" class="navbar">
       <img class="logo"  [src]= "'../assets/transparentlogo.jpg'">
+      <a [routerLink]="['logIn']" class="logo"></a>
       <h1 class="title">{{title}}</h1>
         <nav>
-        <ul>         
-          <li><a [routerLink]="['logIn']">Log in</a></li>
-          <li><a [routerLink]="['signUp']">Sign up</a></li>  
-          <!-- <button (click)="logout()" class="box"> logout </button>   -->
-        </ul>
+            <a [routerLink]="['#']" id="menu-icon"></a>
+              <ul>         
+                <li><a [routerLink]="['logIn']">Log in</a></li>
+                <li><a [routerLink]="['signUp']">Sign up</a></li>  
+              </ul>
       </nav>
     </div>   
+  </header> 
+<!--- End Header-->
 
+<!-- 
+<section class="banner">
 
+  <div class="banner-inner">
+    <img [src]="">
+  </div>
+</section> -->
+
+<!--- End Banner-->
+<!-- <footer>
+  <ul class="social">
+      <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+  </ul>
+
+</footer> -->
       <router-outlet></router-outlet>
     
   

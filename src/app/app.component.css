@@ -29,13 +29,13 @@ nav {
     ;
 
 }
-nav ul {
+ul {
     margin: 0;
     padding: 0;
     height: inherit;
     list-style-type: none;
-}
-nav li {
+} 
+nav ul li {
     display: inline-block;
     text-align: right;
     padding-left: 3px;
@@ -99,3 +99,16 @@ h1 {
    color: white;
    
 } */
+
+.menu-icon {  
+    display: hidden;
+    width: 40px; 
+    height: 40px;
+    background: url("../assets/menu-icon") center;
+}
+
+a:hover#menu-icon {
+    border-radius: 4px 4px 0 0;
+}
+
+

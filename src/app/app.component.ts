@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { SessionService } from './services/session.service';
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
+
 @Component({
 
 

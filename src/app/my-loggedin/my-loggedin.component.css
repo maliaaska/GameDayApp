@@ -1,3 +1,7 @@
+.one-fourth {
+    float: left;
+}
+
 .profile-inf {
     float: left; 
     display: flex;
@@ -5,33 +9,44 @@
 }
 
 .edit-profile{
-    display:flex;
-    float: left;
+  
+   
+    clear: both;
+    margin-top: 50px;
+}
+.button {
+    
+    clear: right; 
+    height: 20px;
+    display: block;
+    
+   
+}
+agm-map {
+    margin-top: 10px;
+    height: 350px;
+    width: 19em;
+    float: right;
+    position: relative;
+    margin-right: 20px;
     
 
 }
-.button {
-    position: relative;
-     clear: right; 
-    height: 20px;
-
-   
-}
 .addMarker {
+    display: flex;
+    width: 310px;
+    position: relative;
     clear:both;
     float: right;
-}
-agm-map {
-    height: 400px;
-    width: 500px;
-    display: flex;
-    align-self: right;
-    float: right;
-    position: relative;
-    margin-top: -20px;
-
+    margin-top: 20px;
 }
 
 .tr {
     height: 28px;
+}
+
+#marker-form {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
 }

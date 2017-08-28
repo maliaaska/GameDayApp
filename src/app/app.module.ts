@@ -14,7 +14,8 @@ import { EnterDetailsGuardService } from './services/enter-details-guard.service
 import { GlobalEventsManager}       from './services/global-events-manager.service';
 import { TopNavbarComponent } from './navbar/navbar.component';
 import { TopNavbarInComponent } from './navbar/navbar-in.component';
-
+import { FileSelectDirective, FileUploader } from "ng2-file-upload";
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
 
 
 export const routes: Routes = [
@@ -35,13 +36,14 @@ export const routes: Routes = [
     MyLoggedinComponent,
     TopNavbarComponent,
     TopNavbarInComponent,
-    
+    FileSelectDirective,
     
    
    
   ],
   imports: [
     BrowserModule,
+    Angular2FontawesomeModule,
     FormsModule,
     RouterModule.forRoot(routes),
     HttpModule,
@@ -56,6 +58,7 @@ export const routes: Routes = [
     EnterDetailsGuardService,
     GlobalEventsManager
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,20 +4,23 @@ import { Router, CanActivate } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 // import { NDV_DIRECTIVES } from 'angular2-click-to-edit/components';
 import { MarkerService } from '../services/marker.service';
-
+import { FileSelectDirective, FileUploader } from "ng2-file-upload";
 // import { GlobalEventsManager } from "../services/global-events-manager.service";
 
 @Component({
   selector: 'app-my-loggedin',
   templateUrl: './my-loggedin.component.html',
   styleUrls: ['./my-loggedin.component.css'],
-  providers: [SessionService, MarkerService],
+  providers: [SessionService, MarkerService, ],
 
 })
 export class MyLoggedinComponent implements OnInit {
-
+  
+  
   error = null;
-
+  uploader: FileUploader = new FileUploader({
+    url: `/user/:id`
+  });
 
   zoom: number = 12;
   lat: number = 41.383155;
@@ -29,12 +32,23 @@ export class MyLoggedinComponent implements OnInit {
   markerDraggable: string;
 
   markers: marker [];
+
+  public  user: Object = {
+          username: String,
+          name: String,
+          lastName: String,
+          favouriteSports: String
+      };
+  public showEditProfile = false;
+
+  feedback: string;
   
     constructor(private session: SessionService,
                 private router: Router,
                 private sessionService: SessionService, 
                 private _markerService: MarkerService,
-                private markerDB : MarkerService
+                private markerDB : MarkerService,
+              
               // private globalEventsManager: GlobalEventsManager
               ){ 
               
@@ -111,13 +125,7 @@ export class MyLoggedinComponent implements OnInit {
      this._markerService.removeMarker(marker);
     }   
 
-  public  user: Object = {
-          username: String,
-          name: String,
-          lastName: String,
-          favouriteSports: String
-      };
-  public showEditProfile = false
+  
 
    checkUser() {
     if(!this.user) {
@@ -151,8 +159,16 @@ export class MyLoggedinComponent implements OnInit {
         console.log('something wnet wrong');
         this.error = err;
       });
+      
     }
 
+    imageUpload() {
+
+      this.uploader.uploadAll();
+      console.log("uploaded corrrectly");
+
+
+    }
 
   ngOnInit() {
         console.log("testing",JSON.parse(localStorage.getItem("user")))
@@ -164,7 +180,14 @@ export class MyLoggedinComponent implements OnInit {
           console.log(markers);
           this.markers = markers;
        })
- 
+       
+       this.uploader.onSuccessItem = (item, response) => {
+        this.feedback = JSON.parse(response).message; 
+    };
+
+      this.uploader.onErrorItem = (item, response, status, headers) => {
+        this.feedback = JSON.parse(response).message;
+    };
 
   }
 

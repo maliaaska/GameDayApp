@@ -31,8 +31,6 @@ export class MarkerService extends Init {
       .map((res) => res.json())
       .catch(this.handleError);
   
-     //   var markers = JSON.parse(localStorage.getItem('markers'), );
-     //   return markers 
     }
 
     getMarkersDB(){
