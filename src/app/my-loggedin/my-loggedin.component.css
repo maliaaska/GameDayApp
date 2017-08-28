@@ -34,9 +34,9 @@ agm-map {
 }
 .addMarker {
     display: flex;
-    width: 310px;
+    width: 250px;
     position: relative;
-    clear:both;
+   
     float: right;
     margin-top: 20px;
 }
